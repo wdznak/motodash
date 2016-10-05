@@ -17,7 +17,7 @@ class CreateUserVehiclesTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->integer('vehicle_id')->unsigned()->index();
             $table->string('thumbnail', 2000);
-            $table->integer('mileage');
+            $table->integer('mileage')->default(0);
             $table->char('version', 20);
             $table->integer('engine_size');
             $table->smallInteger('production_date');
