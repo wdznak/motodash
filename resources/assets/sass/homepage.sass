@@ -1,0 +1,87 @@
+//****************** SASS *****************
+//
+//  MotoDash
+//
+//**************** HOMEPAGE ****************
+
+.body-container
+    width: 100%
+    background: white
+
+.main-container
+    background: white
+
+
+.gallery-box
+    color: white
+    background: white
+    position: relative
+    display: flex
+    height: 400px
+    background:
+        image: url("https://scontent-lhr3-1.xx.fbcdn.net/t31.0-8/10644662_767191503320076_797855203537020292_o.jpg")
+        size: auto 400px
+        position-x: 50%
+        position-y: 50px
+        attachment: fixed
+        repeat: no-repeat
+
+.bottom-bar
+    width: 100%
+    background: rgba(0, 0, 0, 0.3)
+    padding: 5px  20px
+    border-radius: 2px 2px 0 0
+    align-self: flex-end
+    display: flex
+    justify-content: space-between
+    flex-flow: row wrap
+    a
+        color: white
+        text-decoration: none
+        padding-right: 15px
+        opacity: 0.6
+        &:hover
+            color: pink
+            opacity: 1
+    i
+        padding-right: 5px
+
+.left-info
+    align-self: center
+    img
+        margin-right: 10px
+        border-radius: 50%
+
+.right-info
+    align-self: center
+
+.content-info
+    padding-top: 20px
+    padding-bottom: 20px
+    background: #fbfbfb
+    box-shadow: inset 0px 0px 18px -6px rgba(191,191,191,1)
+
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-around
+    align-items: center
+    a
+        text-decoration: none
+        color: #333
+        &:hover
+            color: pink
+
+
+.item1, .item2, .item3
+    max-width: 200px
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    background: white
+    box-shadow: 15px 15px 32px -16px rgba(195,195,195,1)
+    span
+        margin: 10px
+    img
+        width: 100%
+        height: 100%
