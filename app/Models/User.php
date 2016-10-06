@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use PhotoManager;
     /**
      * The booting method of the model
      *
@@ -66,6 +67,9 @@ class User extends Authenticatable
      */
     public function newVehicle($request)
     {
-        return $this->userVehicles()->save(new UserVehicle($request));
+        $modRequest = $request->all();
+        $modRequest['thumbnail'] = $this->savePhotoWithThumbnail($request->file('thumbnail'));
+
+        return $this->userVehicles()->save(new UserVehicle($modRequest));
     }
 }

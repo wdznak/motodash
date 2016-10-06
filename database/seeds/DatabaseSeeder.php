@@ -12,9 +12,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         factory(App\Models\User::class, 10)->create()
-            ->each(function($u) {
-                $u->userVehicles()
-                    ->save(factory(App\Models\UserVehicle::class)->make());
+            ->each(function($user) {
+                $userVehicle = factory(App\Models\UserVehicle::class)->create();
+
+                $userVehicle->refuels()->save(factory(App\Models\Refuel::class)->make());
+
+                $user->userVehicles()
+                     ->save($userVehicle);
             });
     }
 }

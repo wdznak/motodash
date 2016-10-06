@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\UserVehicle;
+use App\Models\User;
 
 class UserPolicy
 {
@@ -13,7 +14,7 @@ class UserPolicy
             $requestUser = User::findOrFail($requestUser);
         }
 
-        return $user->id == $requestUser->user_id;
+        return $user->id == $requestUser->id;
     }
 
     public function modifyVehicle($user, $uservehicle)

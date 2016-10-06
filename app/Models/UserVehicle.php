@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Query;
 use Auth;
+use Config;
+use Storage;
 
 class UserVehicle extends Model
 {
@@ -63,6 +65,14 @@ class UserVehicle extends Model
     }
 
     /**
+     * Get only refuels from last month
+     */
+    public function lastMonthRefuels()
+    {
+        return $this->refuels()->lastMonth();
+    }
+
+    /**
      * Get only latest refuels for userVehicle
      */
     public function latestRefuels()
@@ -108,5 +118,20 @@ class UserVehicle extends Model
     public function vehicles()
     {
         return $this->belongsTo('App\Models\Vehicle', 'vehicle_id', 'id');
+    }
+
+    /**
+     * Delete vehicle
+     *
+     * @return void
+     */
+    public function deleteVehicle()
+    {
+        Storage::delete([
+            Config::get('motodash.userGallery') . $this->user_id . '/' . $this->thumbnail,
+            Config::get('motodash.userGallery') . $this->user_id . '/thumbnail-' . $this->thumbnail
+        ]);
+
+        $this->delete();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Carbon\Carbon;
 
 class Refuel extends Model
 {
@@ -40,6 +41,15 @@ class Refuel extends Model
     public function scopeLatestRefuels($query, $limit = 4){
         return $query->latest()
                      ->limit($limit);
+    }
+
+    /**
+     * Scope a query to only refuels from last month
+     * @return Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeLastMonth($query)
+    {
+        return $query->where('created_at', '>', Carbon::now()->subMonth());
     }
 
     /**
