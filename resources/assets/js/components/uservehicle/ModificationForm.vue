@@ -54,7 +54,6 @@
         >
             Add New
         </button>
-
     </div>
 </template>
 

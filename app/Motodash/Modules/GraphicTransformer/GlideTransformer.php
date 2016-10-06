@@ -33,8 +33,8 @@ class GlideTransformer implements GraphicTransformer
     public function makeThumbnail($filePath, $fileName)
     {
         return $this->glide
-            ->load($filePath)
-            ->modify(['fit' => 'crop', 'w' => 100, 'h' => 100])
-            ->save($fileName);
+                    ->load($filePath)
+                    ->modify(['fit' => 'crop', 'w' => 100, 'h' => 100])
+                    ->save($fileName);
     }
 }

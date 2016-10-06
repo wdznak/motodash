@@ -3,8 +3,6 @@
 namespace App\Motodash\Users\Controllers;
 
 use Auth;
-use Config;
-use Storage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserVehicleRequest;
@@ -89,7 +87,7 @@ class UserVehicleController extends Controller
      */
     public function update(CreateUserVehicleRequest $request, $userVehicleId)
     {
-        $this->userVehicleRepository->modifyVehicle($request, $userVehicleId);
+        $this->userVehicleRepository->updateVehicle($request, $userVehicleId);
 
         return response()->json(
             json_encode([
@@ -112,24 +110,8 @@ class UserVehicleController extends Controller
             abort(403);
         }
 
-        $this->deletePhoto($uservehicle);
-
-        $uservehicle->delete();
+        $uservehicle->deleteVehicle();
 
         return redirect()->route('user.show', ['userId' => $user->id]);
-    }
-
-    /**
-     * Delete vehicle cover photos
-     *
-     * @param  App\Models\UserVehicle $uservehicle
-     * @return void
-     */
-    private function deletePhoto(UserVehicle $uservehicle)
-    {
-        Storage::delete([
-            Config::get('motodash.userGallery') . $uservehicle->user_id . '/' . $uservehicle->thumbnail,
-            Config::get('motodash.userGallery') . $uservehicle->user_id . '/thumbnail-' . $uservehicle->thumbnail
-        ]);
     }
 }

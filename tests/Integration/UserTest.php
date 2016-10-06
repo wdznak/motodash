@@ -18,7 +18,7 @@ class UserTest extends TestCase
 
         $userVehicle = factory(UserVehicle::class, 3)->create(['user_id' => $user->id]);
 
-        $this->assertCount(3, $user->userVehicles()->get(), "Unexpected quantity of the user vehicles");
+        $this->assertCount(3, $user->userVehicles()->get(), "Unexpected user vehicles count");
         $this->assertEquals($user->id, $userVehicle->first()->user_id, "Keys mismatching in user and uservehicles table");
         $this->assertEmpty($userTwo->userVehicles()->get(), "User should not have associated vehicles");
     }
@@ -28,19 +28,22 @@ class UserTest extends TestCase
     {
         $vehicleData = [
             'vehicle_id'      => 1,
-            'thumbnail'       => '/test/url/thumb.png',
+            'thumbnail'       => '',
             'mileage'         => 10000,
             'version'         => 'Some fake version',
             'engine_size'     => 600,
             'production_date' => 2000,
         ];
 
+        $request = new Illuminate\Http\Request();
+        $request->replace($vehicleData);
+
         $user = factory(User::class)->create();
-        $user->newVehicle($vehicleData);
+        $user->newVehicle($request);
 
         $userVehicle = $user->userVehicles()->get();
 
-        $this->assertCount(1, $userVehicle, "Unexpected quantity of the user vehicles");
-        $this->assertEquals($vehicleData['version'], $userVehicle->first()->version);
+        $this->assertCount(1, $userVehicle, "Unexpected user vehicles count");
+        $this->assertEquals($vehicleData['thumbnail'], $userVehicle->first()->thumbnail);
     }
 }
