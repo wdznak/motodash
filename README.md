@@ -7,12 +7,6 @@ Project based on __Laravel 5.2__, __Vuejs 1.0__ and __Fractal__ with __SASS/STYL
 
 #### Key parts of the project:
 
-  
-
-[- Database schema](https://www.dropbox.com/s/qrexfmky9h5czpu/databaseschema.png)
-
-
-
 - [Core of the project](https://github.com/wdznak/motodash/tree/master/app/Motodash)
 - [User controllers](https://github.com/wdznak/motodash/tree/master/app/Motodash/Users/Controllers)
 - [Eloquent Api](https://github.com/wdznak/motodash/tree/master/app/Motodash/Repositories)
@@ -23,3 +17,7 @@ Project based on __Laravel 5.2__, __Vuejs 1.0__ and __Fractal__ with __SASS/STYL
 - [Request Validation](https://github.com/wdznak/motodash/tree/master/app/Http/Requests)
 - [Blade Templates](https://github.com/wdznak/motodash/tree/master/resources/views/layouts)
 - [CSS](https://github.com/wdznak/motodash/tree/master/resources/assets/sass)
+
+![- Database schema](../assets/schema.png)
+![](../assets/sc1.png)
+![](../assets/sc3.png)
