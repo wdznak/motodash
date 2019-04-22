@@ -7,9 +7,9 @@ Project based on __Laravel 5.2__, __Vuejs 1.0__ and __Fractal__ with __SASS/STYL
 
 #### Key parts of the project:
 
-  - Database schema
+  
 
-![alt tag](https://dl.dropboxusercontent.com/u/19018395/databaseschema.png)
+![- Database schema](https://www.dropbox.com/s/qrexfmky9h5czpu/databaseschema.png)
 
 
 
